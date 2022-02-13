@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/*======= Variables =======*/
+:root {
+  --clr-main: #ce6406;
+  --clr-light-tint: #dd9351;
+  --clr-dark-tint: #793b04;
+  --clr-dark: #241101;
+  --clr-compl-blue: #0670ce;
+  --clr-compl-green: #48ce06;
+  --clr-compl-purple: #6406ce;
+  --clr-white: rgb(226, 222, 222);
+  --main-transparent: #ce6306be;
+  --white-transparent: rgba(226, 222, 222, 0.712);
+  --dark-overlay: #2411016b;
+
+  --transition-ease: all 0.2s ease;
+  --transition-linear: all 0.2s linear;
+
+  --linear-gradient-horizontal: linear-gradient(
+    var(--clr-main),
+    var(--clr-compl-purple)
+  );
+  --linear-gradient-vertical: linear-gradient(
+    90deg,
+    var(--clr-main),
+    var(--clr-compl-purple)
+  );
+}
+
+/*======= Golbal Styles =======*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--clr-main);
+  background-color: var(--clr-white);
+  overflow-x: hidden;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+img {
+  width: 35vw;
+  aspect-ratio: 1/0.7;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-dark-tint);
+}
+
+li {
+  list-style: none;
+}
+
+.logo {
+  font-family: "Monoton", cursive;
+}
+
+p {
+  padding-block: 1em;
+}
+
+.btn {
+  padding: 1em;
+  background-color: var(--clr-main);
+  border-radius: 20px;
+  color: var(--clr-white);
+  border: 3px solid var(--clr-main);
+}
+
+.btn:hover {
+  background-color: var(--clr-white);
+  color: var(--clr-main);
+}
+
+.btn-white {
+  padding: 1em;
+  background-color: var(--clr-white);
+  border-radius: 20px;
+  color: var(--clr-main);
+  border: 3px solid var(--clr-main);
+}
+
+.btn-white:hover {
+  background-color: var(--clr-main);
+  color: var(--clr-white);
+}
+
+.heading {
+  text-align: center;
+  position: relative;
+  color: inherit;
+}
+
+.heading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 100%;
+  height: 10%;
+  background-color: var(--clr-main);
+  transform: scale(0.3);
+  transform-origin: left;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 100%;
+  height: 10%;
+  background-color: var(--clr-main);
+  transform: scale(0.3);
+  transform-origin: right;
+}
+
+/*======= Navigation Bar =======*/
+nav {
+  padding: 0.5em;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--clr-white);
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 5px var(--clr-dark-tint);
+  z-index: -1;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-btn {
+  font-size: 2em;
+  transition: var(--transition-ease);
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.nav-bar {
+  display: none;
+  flex-direction: column;
+}
+
+.show-nav-bar {
+  display: flex;
+}
+
+.nav-link {
+  padding: 1em;
+  text-transform: uppercase;
+  z-index: 100;
+  position: relative;
+  color: var(--clr-dark-tint);
+}
+
+.nav-link:hover {
+  color: var(--clr-white);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--clr-light-tint);
+  z-index: -1;
+  transition: var(--transition-ease);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .toggle-btn {
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-bar {
+    display: flex;
+    flex-direction: row;
+    padding-inline: 0.5em;
+  }
+
+  .nav-link {
+    white-space: nowrap;
+  }
+}
+
+/*======= Hero Container =======*/
+.hero-container {
+  height: 75vh;
+  width: 100%;
+  padding-inline: 3%;
+  background: url(img/pexels-aleksandar-pasaric-1436119.jpg) center/cover
+    no-repeat;
+  background-color: #793b04c9;
+  background-blend-mode: multiply;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--clr-main);
+  text-align: right;
+}
+
+.hero {
+  padding-inline: 1em;
+}
+
+.title {
+  font-size: xx-large;
+  background-color: var(--white-transparent);
+  margin-block: 0.5em;
+  padding: 0.5em;
+}
+
+.title-2 {
+  background-color: var(--main-transparent);
+  color: var(--clr-white);
+  padding: 0.5em;
+}
+
+.show-off {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 25vh;
+}
+
+.show-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.show-icon {
+  font-size: 3em;
+}
+/*======= End of Hero Container =======*/
+
+/*======= About Us =======*/
+#about-us {
+  height: 100vh;
+  padding-inline: 5%;
+  padding-top: 10%;
+}
+
+.about-us {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+.about-us-img {
+  position: relative;
+  z-index: 1;
+}
+
+.about-us-img::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  left: -5%;
+  background-color: var(--clr-main);
+  z-index: -1;
+}
+
+.about-us-info {
+  padding-inline: 2em;
+}
+
+.about-us-info p {
+  margin-block: 1em;
+}
+
+@media (min-width: 800px) {
+  .about-us {
+    flex-direction: row;
+  }
+
+  .about-us-info {
+    text-align: left;
+  }
+}
+
+/*======= End of About Us =======*/
+
+/*======= Services =======*/
+#services {
+  color: var(--clr-white);
+  background-color: var(--clr-main);
+  margin-top: 0.7em;
+}
+
+.services {
+  padding: 12% 5%;
+}
+
+.services-container {
+  padding-block: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+}
+
+#services .heading::after,
+#services .heading::before {
+  background-color: var(--clr-white);
+}
+
+.service-card {
+  box-shadow: 0px 0px 10px var(--clr-dark);
+  background-color: var(--clr-white);
+  margin-top: 0.5em;
+  padding: 3% 5%;
+  text-align: center;
+  border-radius: 20px;
+  color: var(--clr-main);
+  position: relative;
+  z-index: 1;
+}
+
+.service-icon {
+  font-size: 3em;
+}
+/*======= End of Services =======*/
+
+/*======= Contact =======*/
+.contact {
+  padding: 10% 1.5%;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-block: 5%;
+}
+
+.contact-info {
+  padding: 3%;
+}
+
+.contact-card {
+  display: flex;
+  padding-top: 5%;
+  border-bottom: 2px solid var(--clr-main);
+}
+
+.contact-icon {
+  font-size: 2em;
+}
+
+.contact-form {
+  background-color: var(--main-transparent);
+  padding: 5%;
+  border-radius: 20px;
+}
+.form-labels {
+  display: block;
+  color: var(--clr-white);
+  padding-block: 0.5em;
+}
+
+input,
+textarea {
+  background-color: var(--clr-white);
+  outline: none;
+  border-radius: 20px;
+  line-height: 1.5em;
+  padding: 1em;
+  border: none;
+  width: 100%;
+}
+
+.submit-btn {
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  .contact-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+/*======= End of Contact =======*/
+
+/*======= Footer =======*/
+footer {
+  background-color: var(--clr-main);
+  color: var(--clr-white);
+  font-size: smaller;
+  padding: 0.5em;
+  text-align: center;
+}
